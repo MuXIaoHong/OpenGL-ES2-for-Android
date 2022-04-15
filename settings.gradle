@@ -15,3 +15,6 @@ dependencyResolutionManagement {
 rootProject.name = "OpenGL for Android"
 include ':app'
 include ':AirHockey1'
+include ':AirHockey2'
+include ':AirHockeyOrtho'
+include ':AirHockey3D'

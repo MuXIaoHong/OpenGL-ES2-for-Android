@@ -11,6 +11,9 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/AirHockey1" />
+            <option value="$PROJECT_DIR$/AirHockey2" />
+            <option value="$PROJECT_DIR$/AirHockey3D" />
+            <option value="$PROJECT_DIR$/AirHockeyOrtho" />
             <option value="$PROJECT_DIR$/app" />
           </set>
         </option>
