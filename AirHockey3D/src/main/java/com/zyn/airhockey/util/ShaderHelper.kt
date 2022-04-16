@@ -21,8 +21,6 @@ class ShaderHelper {
             return compileShader(GL_FRAGMENT_SHADER, shaderCode)
         }
 
-
-
         /**
          * 加载和编译着色器
          */
@@ -103,6 +101,16 @@ class ShaderHelper {
             return validateStatus[0] != 0
         }
 
+        fun buildProgram(vertexShaderSource:String,fragmentShaderSource:String): Int {
+            val vertexShader:Int = compileVertexShader(vertexShaderSource)
+            val fragmentShader = compileFragmentShader(fragmentShaderSource)
+            val program = linkProgram(vertexShader,fragmentShader)
+            if (LoggerConfig.ON){
+                validateProgram(program)
+            }
+            return program
+
+        }
 
 
 
