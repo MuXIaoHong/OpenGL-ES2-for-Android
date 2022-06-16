@@ -50,22 +50,29 @@ class AirHockeyRender(val context: Context) : GLSurfaceView.Renderer {
     }
 
     override fun onSurfaceChanged(gl: GL10?, width: Int, height: Int) {
-        MatrixHelper.perspectiveM(
-            projectionMatrix,
-            45f,
-            width.toFloat() / height.toFloat(),
-            1f,
-            10f
-        )
+//        MatrixHelper.perspectiveM(
+//            projectionMatrix,
+//            45f,
+//            width.toFloat() / height.toFloat(),
+//            1f,
+//            10f
+//        )
+
+        Matrix.setIdentityM(projectionMatrix, 0)
+        val ratio = width.toFloat() / height
+        //视锥体的z值从-1的位置开始，到-10位置结束，所以z往屏幕内是负的，所以OpenGL是右手？
+        Matrix.frustumM(projectionMatrix, 0, -ratio, ratio, -1f, 1f, 1f, 10f)
+
         glViewport(0, 0, width, height)
 
         //设置成单位矩阵
         Matrix.setIdentityM(modelMatrix, 0)
-        //沿着z负方向移动2个单位
+        //沿着z负方向移动2个单位，因为桌子默认Z都是0，在视锥体内【-1，-10】是看不到的
         Matrix.translateM(modelMatrix, 0, 0f, 0f, -2f)
         val temp = FloatArray(16)
-        Matrix.translateM(modelMatrix, 0, 0f, 0f, -2.5f)
-        Matrix.rotateM(modelMatrix, 0, -60f, 1f, 0f, 0f)
+//        Matrix.translateM(modelMatrix, 0, 0f, 0f, -2.5f)
+        Matrix.rotateM(modelMatrix, 0, -45f, 1f, 0f, 0f)
+//        Matrix.rotateM(modelMatrix, 0, 45f, 0f, 0f, 1f)
         Matrix.multiplyMM(temp, 0, projectionMatrix, 0, modelMatrix, 0)
         System.arraycopy(temp, 0, projectionMatrix, 0, temp.size)
 

@@ -65,7 +65,7 @@ class AirHockeyRender(val context: Context) : GLSurfaceView.Renderer {
             1f,
             10f
         )
-        Matrix.setLookAtM(viewMatrix,0,0f,1.2f,2.2f,0f,0f,0f,0f,1f,0f)
+        Matrix.setLookAtM(viewMatrix,0,0f,1.2f,8.2f,0f,0f,0f,0f,1f,0f)
     }
 
     override fun onDrawFrame(gl: GL10?) {
